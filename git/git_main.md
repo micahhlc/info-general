@@ -32,7 +32,7 @@ git push origin main
 git push --force origin main
 
 # Unstage a file (keep changes)
-it reset <file-name>
+git reset <file-name>
 
 # Unstage all files (keep changes)
 git reset
