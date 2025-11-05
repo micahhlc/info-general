@@ -4,7 +4,8 @@
 - https://www.markdownguide.org/cheat-sheet/
 
 
-     
+# Preview     
+This will render correctly in VSCode’s Markdown preview (⌘ + Shift + V).
 
 
 
