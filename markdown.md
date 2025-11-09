@@ -12,6 +12,7 @@ This will render correctly in VSCode’s Markdown preview (⌘ + Shift + V).
 ## Table
 
 | Syntax      | Description | Test Text     |
+| -- | -- | --
 | :---        |    :----:   |          ---: |
 | Header      | Title       | Here's this   |
 | Paragraph   | Text        | And more      |
