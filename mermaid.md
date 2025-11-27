@@ -2,9 +2,7 @@
 # Basic Mermaid Syntax
 Mermaid is a Markdown-inspired syntax for generating diagrams and flowcharts from text. It's designed to be simple and easy to read.
 
-Here's a breakdown of the most common and basic syntax elements:
-
-1. Diagram Type Declaration:
+## Diagram Type Declaration:
 Every Mermaid diagram starts by declaring its type.
 
 - Flowchart: graph LR (Left to Right), graph TD (Top Down), graph RL (Right to Left), graph BT (Bottom Top)
@@ -15,7 +13,130 @@ Every Mermaid diagram starts by declaring its type.
 - Pie Chart: pie
 - Git Graph: gitGraph
 
-2. Nodes (Shapes):
+### Flowchart
+Explanation: The standard process flow, from top to bottom.
+
+```mermaid
+graph TD
+    A[User visits Ichiba] --> B{Is authenticated?};
+    B -- No --> C[Show Login Page];
+    B -- Yes --> D[Show Personalized Homepage];
+```
+
+### Sequence Diagram
+This shows the interaction when a user updates their address in your AddressBook service.
+
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant FE as AddressBook FE
+    participant BE as AddressBook BE
+
+    User->>FE: Enters new address and clicks "Save"
+    activate FE
+    FE->>BE: POST /api/addresses/update (new address data)
+    activate BE
+    BE-->>FE: 200 OK {status: "success"}
+    deactivate BE
+    FE-->>User: Display "Address Saved!"
+    deactivate FE
+
+```
+
+### Gantt Chart
+
+```mermaid
+gantt
+    title Q4 2025 Feature Release
+    dateFormat  YYYY-MM-DD
+    
+    section Planning
+    Define Specs     :done, 2025-10-01, 7d
+    Create Tickets   :done, 2025-10-08, 3d
+
+    section Development
+    Backend API      :active, 2025-10-11, 20d
+    Frontend UI      :2025-10-15, 20d
+
+    section Testing
+    QA Testing       :2025-11-10, 10d
+    UAT with Checkout Team : 2025-11-24, 5d
+```
+
+
+### Class Diagram
+
+
+```mermaid
+classDiagram
+    class User {
+        +String userId
+        +String name
+        +String email
+        +updateProfile()
+    }
+    class Address {
+        +String addressId
+        +String postalCode
+        +String city
+        +String street
+        +validate()
+    }
+
+    User "1" -- "0..*" Address : manages
+
+```
+
+### State Diagram
+This shows the different states of a user's account within your profile system.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Unverified
+
+    Unverified --> Active: User confirms email
+    Active --> Suspended: Fraud detection triggered
+    Suspended --> Active: User appeal approved
+    Active --> [*]: User deletes account
+    Suspended --> [*]: Account purged
+
+
+```
+
+
+### Pie Chart: pie
+This shows a hypothetical breakdown of the MAU (Monthly Active Users) for your different products.
+
+```mermaid
+pie
+    title Product MAU Distribution
+    "AddressBook" : 30
+    "MyR/Waffles" : 2
+    "AddressSearch" : 10
+    "MyData" : 5
+
+```
+
+### Git Graph: gitGraph
+This visualizes a typical Git workflow for developing a new feature.
+
+```mermaid
+gitGraph
+   commit id: "Initial"
+   branch feature/new-address-field
+   checkout feature/new-address-field
+   commit id: "BE: Add column"
+   commit id: "FE: Add input field"
+   checkout main
+   commit id: "Hotfix on main"
+   merge feature/new-address-field
+   commit id: "Release v2.1"
+
+```
+
+
+## Nodes (Shapes):
 Nodes are the boxes, circles, or other shapes that represent steps or entities.
 
 Default Rectangle: id[Text]
@@ -50,7 +171,7 @@ graph TD
 ```
 
 
-3. Links/Edges (Arrows):
+## Links/Edges (Arrows):
 Links connect nodes and show relationships.
 
 - Basic Arrow: A --> B
@@ -71,7 +192,7 @@ graph LR
 
 ```
 
-4. Subgraphs:
+## Subgraphs:
 Group related nodes together.
 
 subgraph Name
@@ -90,7 +211,7 @@ graph TD
 
 ```
 
-5. Comments:
+## Comments:
 Starts with %%.
 
 %% This is a comment and will be ignored
@@ -133,3 +254,5 @@ This is the most popular and supported way, especially in tools like VS Code, Gi
 </html>
 
 ```
+
+# Examples 

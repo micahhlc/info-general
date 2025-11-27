@@ -6,16 +6,27 @@ graph
         BE.MyR[MyR BE]
     end
 
-    subgraph Token
-        CAT[CAT]
-        Nerulayzer[Nerulayzer]
+    subgraph Fraud Prevention
+        Challenger[Challenger]
+    end
+
+    subgraph Profile BE ToBe
+        IDPS[ID Profile Service]
+    end
+
+    subgraph Auth BE
+        BE.Authv2[Auth v2]
     end
 
     subgraph JID & SEG & RID
         BE.ProfileSelector[Profile Selector API]
         BE.JID2v2[JID2v2]
-        BE.Authv2[Auth v2]
         BE.Restv2[RID Restv2]
+    end
+
+    subgraph Token
+        CAT[CAT]
+        Nerulayzer[Nerulayzer]
     end
 
     subgraph IDS
@@ -23,6 +34,8 @@ graph
         DB[Cassandra]
     end
 
+    BE.MyR -- " " --> IDPS
+    IDPS -- " " --> DB.API
     FE.MyR -- "Send request to MyR BE" --> BE.MyR
     BE.MyR -- "[JP] Noncredential + username" --> BE.ProfileSelector
     BE.MyR <-- "Validate Token" --> CAT
