@@ -1,6 +1,13 @@
 ```mermaid
+---
+config:
+  flowchart:
+    htmlLabels: false
+---
+flowchart 
 
-graph 
+classDef red fill:#f00,stroke:#333,stroke-width:4px;
+
     subgraph MyR
         FE.MyR[MyR FE]
         BE.MyR[MyR BE]
@@ -11,8 +18,9 @@ graph
     end
 
     subgraph Profile BE ToBe
-        IDPS[ID Profile Service]
+        IDPS["ID Profile Service"]
     end
+    class IDPS red
 
     subgraph Auth BE
         BE.Authv2[Auth v2]
@@ -31,13 +39,13 @@ graph
 
     subgraph IDS
         DB.API[IDS DB API]
-        DB[Cassandra]
+        DB[(Cassandra)]
     end
 
     BE.MyR -- " " --> IDPS
     IDPS -- " " --> DB.API
-    FE.MyR -- "Send request to MyR BE" --> BE.MyR
-    BE.MyR -- "[JP] Noncredential + username" --> BE.ProfileSelector
+    FE.MyR -- "Sendrequest to MyR BE" --> BE.MyR
+    BE.MyR -- "`[JP] Noncredential + username`" --> BE.ProfileSelector
     BE.MyR <-- "Validate Token" --> CAT
     BE.MyR -- "[AP] Noncredential + username" --> BE.Restv2
     BE.MyR -- "[JP AP] for Email & Password" --> BE.Authv2
@@ -45,4 +53,5 @@ graph
     BE.JID2v2 -- " " --> DB.API
     BE.Authv2 -- " " --> DB.API
     DB.API -- "Call DB only through IDS DB API" --> DB
+
 ```

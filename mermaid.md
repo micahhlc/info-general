@@ -1,19 +1,16 @@
 
 # Basic Mermaid Syntax
 Mermaid is a Markdown-inspired syntax for generating diagrams and flowcharts from text. It's designed to be simple and easy to read.
+https://mermaid.js.org/intro/syntax-reference.html
+
+
 
 ## Diagram Type Declaration:
 Every Mermaid diagram starts by declaring its type.
 
-- Flowchart: graph LR (Left to Right), graph TD (Top Down), graph RL (Right to Left), graph BT (Bottom Top)
-- Sequence Diagram: sequenceDiagram
-- Gantt Chart: gantt
-- Class Diagram: classDiagram
-- State Diagram: stateDiagram-v2
-- Pie Chart: pie
-- Git Graph: gitGraph
 
 ### Flowchart
+- Flowchart: graph LR (Left to Right), graph TD (Top Down), graph RL (Right to Left), graph BT (Bottom Top)
 Explanation: The standard process flow, from top to bottom.
 
 ```mermaid
@@ -24,6 +21,7 @@ graph TD
 ```
 
 ### Sequence Diagram
+- Sequence Diagram: sequenceDiagram
 This shows the interaction when a user updates their address in your AddressBook service.
 
 
@@ -44,29 +42,10 @@ sequenceDiagram
 
 ```
 
-### Gantt Chart
-
-```mermaid
-gantt
-    title Q4 2025 Feature Release
-    dateFormat  YYYY-MM-DD
-    
-    section Planning
-    Define Specs     :done, 2025-10-01, 7d
-    Create Tickets   :done, 2025-10-08, 3d
-
-    section Development
-    Backend API      :active, 2025-10-11, 20d
-    Frontend UI      :2025-10-15, 20d
-
-    section Testing
-    QA Testing       :2025-11-10, 10d
-    UAT with Checkout Team : 2025-11-24, 5d
-```
 
 
 ### Class Diagram
-
+- Class Diagram: classDiagram
 
 ```mermaid
 classDiagram
@@ -89,6 +68,7 @@ classDiagram
 ```
 
 ### State Diagram
+- State Diagram: stateDiagram-v2
 This shows the different states of a user's account within your profile system.
 
 ```mermaid
@@ -106,6 +86,7 @@ stateDiagram-v2
 
 
 ### Pie Chart: pie
+- Pie Chart: pie
 This shows a hypothetical breakdown of the MAU (Monthly Active Users) for your different products.
 
 ```mermaid
@@ -118,22 +99,30 @@ pie
 
 ```
 
-### Git Graph: gitGraph
-This visualizes a typical Git workflow for developing a new feature.
+### QuadrantChart
+- Quadrant Chart: quadrantChart
 
 ```mermaid
-gitGraph
-   commit id: "Initial"
-   branch feature/new-address-field
-   checkout feature/new-address-field
-   commit id: "BE: Add column"
-   commit id: "FE: Add input field"
-   checkout main
-   commit id: "Hotfix on main"
-   merge feature/new-address-field
-   commit id: "Release v2.1"
-
+quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --> High Reach
+    y-axis Low Engagement --> High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    Campaign A:::class1: [0.3, 0.6]
+    Campaign B:::class2: [0.45, 0.23]
+    Campaign C:::class3: [0.57, 0.69]
+    Campaign D: [0.78, 0.34] radius: 15, stroke-color: #00ff0f, stroke-width: 5px ,color: #ff33f0
+    Campaign E: [0.40, 0.34]
+    Campaign F: [0.35, 0.78]
+    
+    classDef class1 color: #109060
+    classDef class2 color: #908342, radius : 10, stroke-color: #310085, stroke-width: 10px
+    classDef class3 color: #f00fff, radius : 10
 ```
+
 
 
 ## Nodes (Shapes):
@@ -182,13 +171,27 @@ Links connect nodes and show relationships.
 - Thick Arrow: A ===> B
 - Thick Arrow with Text: A == Text ===> B
 
+## Line length
+| Length | 1 | 2 | 3 |
+| -- | -- | -- | -- |
+| Normal | 	--- | 	---- | 	----- |
+| Normal with arrow	| --> |	---> |	----> |
+| Thick	| ===	| ====	| ===== |
+| Thick with arrow | ==>	| ===>	| ====> |
+| Dotted	| -.-	| -..-	| -...- |
+| Dotted with arrow	| -.->	| -..->	| -...-> |
+
+   
+
+
+
 ```mermaid
 graph LR
     Start --> Process
     Process -- "Yes" --> Decision
     Decision -- "No" --> End
     Start -.-> Another
-    Another ===> Final
+    Another ====> Final
 
 ```
 

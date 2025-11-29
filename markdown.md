@@ -46,8 +46,16 @@ At the command prompt, type `nano`.
 ## Strikethrough
 ~~The world is flat.~~
 
-X^2^
 
+## Subscript
+This isn’t common, but some Markdown processors allow you to use subscript to position one or more characters slightly below the normal line of type. To create a subscript, use one tilde symbol (~) before and after the characters.
+
+H~2~O
+
+## Superscript
+This isn’t common, but some Markdown processors allow you to use superscript to position one or more characters slightly above the normal line of type. To create a superscript, use one caret symbol (^) before and after the characters.
+
+X^2^
 
 
 
